@@ -1,3 +1,4 @@
+package com.narekusei.todolist;
 import java.io.*; // For FileInputStream, FileOutputStream, ObjectInputStream, ObjectOutputStream, IOException
 import java.util.ArrayList;
 import java.util.List;
@@ -41,24 +42,15 @@ public class TodoListManager {
                 choice = Integer.parseInt(input); // Try to convert input to an integer
 
                 switch (choice) {
-                    case 1:
-                        viewTasks();
-                        break;
-                    case 2:
-                        addTask();
-                        break;
-                    case 3:
-                        markTaskComplete();
-                        break;
-                    case 4:
-                        removeTask();
-                        break;
-                    case 0:
+                    case 1 -> viewTasks();
+                    case 2 -> addTask();
+                    case 3 -> markTaskComplete();
+                    case 4 -> removeTask();
+                    case 0 -> {
                         saveTasksToFile(); // Save before exiting
                         System.out.println("Exiting application. Tasks saved.");
-                        break;
-                    default:
-                        System.out.println("Invalid choice. Please try again.");
+                    }
+                    default -> System.out.println("Invalid choice. Please try again.");
                 }
             } catch (NumberFormatException e) {
                 // Handle cases where input is not a valid number
